@@ -13,6 +13,6 @@ curl -fsSL https://raw.githubusercontent.com/bermanboris/proxmox-disk-expander/m
 
 #### Using locally
 ```bash
-curl -O https://raw.githubusercontent.com/bermanboris/proxmox-disk-expander/main/expand.sh
+curl -sO https://raw.githubusercontent.com/bermanboris/proxmox-disk-expander/main/expand.sh
 bash expand.sh 100 15G
 ```
