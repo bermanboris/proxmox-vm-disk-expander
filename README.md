@@ -4,7 +4,7 @@ Expand your VM disks (including the partition) from your Proxmox host with a sin
 ## Usage
 
 ### Example: Expand VM (with id 100) disk by 15G
-```shell
+```bash
 wget https://raw.githubusercontent.com/bermanboris/proxmox-disk-expander/main/expand.sh
-bash expand.sh 100 15G
+./expand.sh 100 15G
 ```
