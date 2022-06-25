@@ -20,7 +20,7 @@ qm list
 read -p "Enter the VM ID to be expanded: " VM_ID
 # Check if the VM id is valid
 if [ -z "$(qm list | grep $VM_ID)" ]; then
-  echo "\Invalid VM ID"
+  echo "\nInvalid VM ID"
   exit 1
 fi
 
@@ -28,7 +28,7 @@ fi
 read -p "Enter the size to be expanded in GB (exmaple: 10g): " EXPAND_BY_GB
 # Check if the size is valid
 if [ -z "$(echo $EXPAND_BY_GB | grep -E '^[0-9]+[Gg]$')" ]; then
-  echo "\Invalid size"
+  echo "\nInvalid size"
   exit 1
 fi
 
@@ -47,13 +47,13 @@ read -p "Are you sure you want to continue? (yes/no) " -n 1 -r
 
 # if the user says yes, then continue otherwise exit
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  echo "\Expanding the disk..."
+  echo "\nExpanding the disk..."
   sudo kpartx -a $VIRTUAL_DISK_PATH
   sudo growpart /dev/${DISK_NAME} ${VIRTUAL_DISK_NAME}
   sudo resize2fs /dev/${DISK_NAME}${VIRTUAL_DISK_NAME}
   sudo kpartx -d $VIRTUAL_DISK_PATH
   # echo "Disk expanded successfully"
 else
-  echo "\Exiting..."
+  echo "\nExiting..."
   exit 1
 fi
