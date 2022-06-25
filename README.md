@@ -44,9 +44,9 @@ curl -sS https://raw.githubusercontent.com/bermanboris/proxmox-vm-disk-expander/
        101 test                 stopped    2048               2.20 0
       9000 ubuntu22-04-cloud    stopped    2048               2.20 0
 Enter the VM ID to be expanded: 101
-Enter the size to be expanded in GB (exmaple: 10G): 5G
+Enter the size to be expanded in GB (example: 10G): 5G
 VM ID 101 disk storage1 will be expanded by 5G
-Warning: There is no way to downsize the disk!
+Warning: There is currently no way to downsize the disk!
 Are you sure you want to expand the disk? (yes/no): yes
 
 Expanding the disk...  Size of logical volume storage1/vm-101-disk-0 changed from <2.20 GiB (563 extents) to <7.20 GiB (1843 extents).
