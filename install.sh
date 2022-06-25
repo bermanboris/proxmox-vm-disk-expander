@@ -12,4 +12,7 @@ fi
 
 curl -s -o /usr/local/bin/expand-disk https://raw.githubusercontent.com/fire1ce/proxmox-vm-disk-expander/main/expand.sh
 
-chmod +x /usr/local/bin/expand-disk
+# if the download was successful, then make the file executable
+if [ -f "/usr/local/bin/expand-disk" ]; then
+  chmod +x /usr/local/bin/expand-disk
+fi
