@@ -16,7 +16,7 @@ fi
 
 # List of all the vm
 VM_LIST = $(qm list)
-echo $VM_LIST
+echo VM_LIST
 # Promt the user to select the vm id to be expanded
 read -p "Enter the VM ID to be expanded: " VM_ID
 # Check if the VM id is valid
