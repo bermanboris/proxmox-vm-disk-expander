@@ -65,4 +65,5 @@ The operation has completed successfully.
 
 ## Limitations
 
+- Currently supported only "cloud images" 
 - Resize of Ceph disks is currently not supported (PR are welcome!)
