@@ -50,7 +50,7 @@ read -p "Are you sure you want to expand the disk? (yes/no): " CONFIRM
 # read -p "Are you sure you want to continue? (yes/no) " -n 1 -r
 
 # if the user says yes, then continue otherwise exit
-if [[ $REPLY =~ ^[Yy]$ ]]; then
+if [[ $REPLY =~ ^[yes]$ ]]; then
   printf "\nExpanding the disk..."
   qm resize $VM_ID scsi0 +${NEW_SIZE}
   kpartx -av ${VIRTUAL_DISK_PATH}
