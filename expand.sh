@@ -17,10 +17,10 @@ if [ -z "$(qm list | grep $VM_ID)" ]; then
 fi
 
 # promt the user to enter the size to be expanded
-read -p "Enter the size to be expanded in GB (exmaple: 10g): " EXPAND_BY_GB
+read -p "Enter the size to be expanded in GB (exmaple: 10G): " EXPAND_BY_GB
 # Check if the size is valid
-if [ -z "$(printf $EXPAND_BY_GB | grep -E '^[0-9]+[Gg]$')" ]; then
-  printf "\nInvalid size. Please enter the size in GB (exmaple: 10g)"
+if [ -z "$(printf $EXPAND_BY_GB | grep -E '^[0-9]+[G]$')" ]; then
+  printf "\nInvalid size. Please enter the size in GB (exmaple: 10G)"
   exit 1
 fi
 
@@ -43,7 +43,9 @@ if [ "$CONFIRM" = "yes" ]; then
   kpartx -av ${VIRTUAL_DISK_PATH}
   sgdisk ${VIRTUAL_DISK_PATH} -e
   kpartx -d ${VIRTUAL_DISK_PATH}
+
 else
+
   printf "\nExiting"
   exit 1
 fi
