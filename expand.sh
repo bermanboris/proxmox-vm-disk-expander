@@ -9,23 +9,32 @@ fi
 # List of all the vm
 qm list
 
-# Promt the user to select the vm id to be expanded
-read -p "Enter the VM ID to be expanded: " VM_ID
+while true; do
+  # Promt the user to select the vm id to be expanded
+  read -p "Enter the VM ID to be expanded: " VM_ID
+  
+  # Check if the VM id is valid
+  if [ -z "$(qm list | grep $VM_ID)" ]; then
+    printf "\nInvalid VM ID"
+  else
+    break
+  fi
+done
 
-# Check if the VM id is valid
-if [ -z "$(qm list | grep $VM_ID)" ]; then
-  printf "\nInvalid VM ID"
-  exit 1
-fi
 
-# promt the user to enter the size to be expanded
-read -p "Enter the size to be expanded in GB (exmaple: 10G): " EXPAND_BY_GB
+while true; do
+  # promt the user to enter the size to be expanded
+  read -p "Enter the size to be expanded in GB (exmaple: 10G): " EXPAND_BY_GB
 
-# Check if the size is valid
-if [ -z "$(printf $EXPAND_BY_GB | grep -E '^[0-9]+[G]$')" ]; then
-  printf "\nInvalid size. Please enter the size in GB (exmaple: 10G)"
-  exit 1
-fi
+  # Check if the size is valid
+  if [ -z "$(printf $EXPAND_BY_GB | grep -E '^[0-9]+[G]$')" ]; then
+    printf "\nInvalid size. Please enter the size in GB (exmaple: 10G)"
+  else
+    break
+  fi
+done
+  
+  
 
 # Set needed variables for expansion
 DISK_NAME=$(qm config $VM_ID | grep scsi0: | awk '{split($2,a,":|,");print a[1]}')
