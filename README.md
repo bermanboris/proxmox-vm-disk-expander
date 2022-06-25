@@ -1,17 +1,24 @@
-# proxmox-disk-expander
-Expand your VM disks (including the partition) from your Proxmox host with a single command
+# proxmox-vm-disk-expander
+
+Interactive disk expander for Proxmox VE.
+Expand your VM disks (including the partition) from your Proxmox host.
 
 ## Usage
 
-### Expand VM (with id 100) disk by 15G by downloading script
+### Curl method:
 
-#### Using curl 
+It will run the script once without installing it.
+
 ```bash
-curl -fsSL https://raw.githubusercontent.com/bermanboris/proxmox-disk-expander/main/expand.sh | bash -s -- 100 5G
+bash <(curl -s https://raw.githubusercontent.com/fire1ce/proxmox-vm-disk-expander/main/expand.sh)
 ```
 
+### Installer
 
-#### Using locally
+It will install the script at Proxmox host for multiple use.
+
+Run the following command from Proxmox host:
+
 ```bash
 curl -sO https://raw.githubusercontent.com/bermanboris/proxmox-disk-expander/main/expand.sh
 bash expand.sh 100 15G
