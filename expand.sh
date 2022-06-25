@@ -32,10 +32,10 @@ if [ -z "$(echo $EXPAND_BY_GB | grep -E '^[0-9]+[Gg]$')" ]; then
   exit 1
 fi
 
-# VM_ID=$1
+# VM_ID=$VM_ID
 # EXPAND_BY_GB=$2
-DISK_NAME=$(qm config $1 | grep scsi0: | awk '{split($2,a,":|,");print a[1]}')
-VIRTUAL_DISK_NAME=$(qm config $1 | grep scsi0: | awk '{split($2,a,":|,");print a[2]}')
+DISK_NAME=$(qm config $VM_ID | grep scsi0: | awk '{split($2,a,":|,");print a[1]}')
+VIRTUAL_DISK_NAME=$(qm config $VM_ID | grep scsi0: | awk '{split($2,a,":|,");print a[2]}')
 VIRTUAL_DISK_PATH="/dev/${DISK_NAME}/${VIRTUAL_DISK_NAME}"
 
 # Display red warning
