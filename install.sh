@@ -4,12 +4,13 @@ if [ ! -d "/usr/local/bin" ]; then
   mkdir -p /usr/local/bin
 fi
 
-# if /usr/local/bin/expand-disk exists, then remove it
+# Remove the old version of the script if it exists
 
 if [ -f "/usr/local/bin/expand-disk" ]; then
   rm /usr/local/bin/expand-disk
 fi
 
+# Download the latest version of expand-disk
 curl -sS -o /usr/local/bin/expand-disk https://raw.githubusercontent.com/fire1ce/proxmox-vm-disk-expander/main/expand.sh
 
 # if the download was successful, then make the file executable else exit
@@ -21,5 +22,5 @@ else
   exit 1
 fi
 
-# Print the usage
+# Print the usage message
 printf "\nUsage: expand-disk\n"
