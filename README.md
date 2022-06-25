@@ -4,7 +4,7 @@ Interactive disk expander for Proxmox's VM disks (including the partition) from 
 
 ## Curl Method
 
-Run the script once without installing it.
+Run the script once, without installing it.
 
 ```shell
 bash <(curl -s https://raw.githubusercontent.com/fire1ce/proxmox-vm-disk-expander/main/expand.sh)
