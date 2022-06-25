@@ -15,9 +15,9 @@ curl -sS -o /usr/local/bin/expand-disk https://raw.githubusercontent.com/fire1ce
 # if the download was successful, then make the file executable else exit
 if [ -f "/usr/local/bin/expand-disk" ]; then
   chmod +x /usr/local/bin/expand-disk
-  printf "\nExpand-disk script downloaded and installed successfully"
+  echo "\nExpand-disk script downloaded and installed successfully"
 else
-  printf "\nError: Download failed"
+  echo "\nError: Download failed"
   exit 1
 fi
 
