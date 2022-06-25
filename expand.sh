@@ -24,8 +24,8 @@ if [ -z "$(qm list | grep $VM_ID)" ]; then
   exit 1
 fi
 
-# prom the user to enter the size to be expanded
-read -p "Enter the size to be expanded in GB (exmaple: 12): " EXPAND_BY_GB
+# promt the user to enter the size to be expanded
+read -p "Enter the size to be expanded in GB (exmaple: 12g): " EXPAND_BY_GB
 # Check if the size is valid
 if [ -z "$(echo $EXPAND_BY_GB | grep -E '^[0-9]+[Gg]$')" ]; then
   echo "Invalid size"
@@ -33,13 +33,13 @@ if [ -z "$(echo $EXPAND_BY_GB | grep -E '^[0-9]+[Gg]$')" ]; then
 fi
 
 # VM_ID=$1
-# NEW_SIZE=$2
+# EXPAND_BY_GB=$2
 DISK_NAME=$(qm config $1 | grep scsi0: | awk '{split($2,a,":|,");print a[1]}')
 VIRTUAL_DISK_NAME=$(qm config $1 | grep scsi0: | awk '{split($2,a,":|,");print a[2]}')
 VIRTUAL_DISK_PATH="/dev/${DISK_NAME}/${VIRTUAL_DISK_NAME}"
 
 # Display red warning
-echo VM: ${VM_ID} disk ${DISK_NAME} will be expanded by ${NEW_SIZE}
+echo VM: ${VM_ID} disk ${DISK_NAME} will be expanded by ${EXPAND_BY_GB}
 echo -e "\e[31mWarning: There is no way to downsize the disk \e[0m"
 
 # Ask for confirmation
@@ -48,7 +48,7 @@ read -p "Are you sure you want to continue? (yes/no) " -n 1 -r
 # if the user says yes, then continue otherwise exit
 if [[ $REPLY =~ ^[yes]$ ]]; then
   echo "Expanding disk..."
-  sudo qm resize $VM_ID scsi0 +${NEW_SIZE}
+  sudo qm resize $VM_ID scsi0 +${EXPAND_BY_GB}
   sudo kpartx -av ${VIRTUAL_DISK_PATH}
   sudo sgdisk ${VIRTUAL_DISK_PATH} -e
   sudo kpartx -d ${VIRTUAL_DISK_PATH}
