@@ -46,13 +46,13 @@ echo -e "\e[31mWarning: There is no way to downsize the disk \e[0m"
 read -p "Are you sure you want to continue? (yes/no) " -n 1 -r
 
 # if the user says yes, then continue otherwise exit
-if [[ $REPLY =~ ^[yes]$ ]]; then
-  echo "Expanding disk..."
-  sudo qm resize $VM_ID scsi0 +${EXPAND_BY_GB}
-  sudo kpartx -av ${VIRTUAL_DISK_PATH}
-  sudo sgdisk ${VIRTUAL_DISK_PATH} -e
-  sudo kpartx -d ${VIRTUAL_DISK_PATH}
-  echo "Expanding disk...done"
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  echo "Expanding the disk..."
+  sudo kpartx -a $VIRTUAL_DISK_PATH
+  sudo growpart /dev/${DISK_NAME} ${VIRTUAL_DISK_NAME}
+  sudo resize2fs /dev/${DISK_NAME}${VIRTUAL_DISK_NAME}
+  sudo kpartx -d $VIRTUAL_DISK_PATH
+  # echo "Disk expanded successfully"
 else
   echo "Exiting..."
   exit 1
