@@ -47,16 +47,14 @@ echo -e "\e[31mWarning: There is no way to downsize the disk \e[0m"
 
 # Ask for confirmation "yes" and git enter to continue
 read -p "Are you sure you want to expand the disk? (yes/no): " CONFIRM
-# read -p "Are you sure you want to continue? (yes/no) " -n 1 -r
 
 # if the user says yes, then continue otherwise exit
-if [[ $REPLY =~ ^[yes]$ ]]; then
+if [ "$CONFIRM" = "yes" ]; then
   printf "\nExpanding the disk..."
   qm resize $VM_ID scsi0 +${NEW_SIZE}
   kpartx -av ${VIRTUAL_DISK_PATH}
   sgdisk ${VIRTUAL_DISK_PATH} -e
   kpartx -d ${VIRTUAL_DISK_PATH}
-  # printf "Disk expanded successfully"
 else
   printf "\nExiting..."
   exit 1
