@@ -11,7 +11,7 @@ if [ -f "/usr/local/bin/expand-disk" ]; then
 fi
 
 # Download the latest version of expand-disk
-curl -sS -o /usr/local/bin/expand-disk https://raw.githubusercontent.com/fire1ce/proxmox-vm-disk-expander/main/expand.sh
+curl -sS -o /usr/local/bin/expand-disk https://raw.githubusercontent.com/bermanboris/proxmox-vm-disk-expander/main/expand.sh
 
 # if the download was successful, then make the file executable else exit
 if [ -f "/usr/local/bin/expand-disk" ]; then
