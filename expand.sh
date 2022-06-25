@@ -25,7 +25,7 @@ if [ -z "$(qm list | grep $VM_ID)" ]; then
 fi
 
 # promt the user to enter the size to be expanded
-read -p "Enter the size to be expanded in GB (exmaple: 12g): " EXPAND_BY_GB
+read -p "Enter the size to be expanded in GB (exmaple: 10g): " EXPAND_BY_GB
 # Check if the size is valid
 if [ -z "$(echo $EXPAND_BY_GB | grep -E '^[0-9]+[Gg]$')" ]; then
   echo "Invalid size"
