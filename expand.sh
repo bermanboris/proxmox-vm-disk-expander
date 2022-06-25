@@ -15,7 +15,7 @@ while true; do
 
   # Check if the VM id is valid
   if [ -z "$(qm list | grep $VM_ID)" ]; then
-    printf "\nInvalid VM ID"
+    printf "\nInvalid VM ID\n"
   else
     break
   fi
@@ -27,7 +27,7 @@ while true; do
 
   # Check if the size is valid
   if [ -z "$(printf $EXPAND_BY_GB | grep -E '^[0-9]+[G]$')" ]; then
-    printf "\nInvalid size. Please enter the size in GB (example: 10G)"
+    printf "\nInvalid size. Please enter the size in GB (example: 10G)\n"
   else
     break
   fi
