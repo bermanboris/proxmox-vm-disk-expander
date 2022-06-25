@@ -20,6 +20,12 @@ Run the following command from Proxmox host:
 curl -sS https://raw.githubusercontent.com/fire1ce/proxmox-vm-disk-expander/main/install.sh | bash
 ```
 
+### Usage
+
+```shell
+expand-disk
+```
+
 ## Update
 
 Same as the installer.
