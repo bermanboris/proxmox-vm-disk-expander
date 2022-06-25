@@ -12,7 +12,13 @@ fi
 
 curl -s -o /usr/local/bin/expand-disk https://raw.githubusercontent.com/fire1ce/proxmox-vm-disk-expander/main/expand.sh
 
-# if the download was successful, then make the file executable
+# if the download was successful, then make the file executable else exit
 if [ -f "/usr/local/bin/expand-disk" ]; then
   chmod +x /usr/local/bin/expand-disk
+else
+  printf "\nError: Download failed"
+  exit 1
 fi
+
+# Print the usage
+printf "\nUsage: expand-disk\n"
