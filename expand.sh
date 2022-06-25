@@ -15,7 +15,8 @@ fi
 # fi
 
 # List of all the vm
-echo $(qm list)
+VM_LIST = $(qm list)
+echo $VM_LIST
 # Promt the user to select the vm id to be expanded
 read -p "Enter the VM ID to be expanded: " VM_ID
 # Check if the VM id is valid
@@ -25,7 +26,7 @@ if [ -z "$(qm list | grep $VM_ID)" ]; then
 fi
 
 # prom the user to enter the size to be expanded
-read -p "Enter the size to be expanded in GB (exmaple: 12g): " EXPAND_BY_GB
+read -p "Enter the size to be expanded in GB (exmaple: 12): " EXPAND_BY_GB
 # Check if the size is valid
 if [ -z "$(echo $EXPAND_BY_GB | grep -E '^[0-9]+[Gg]$')" ]; then
   echo "Invalid size"
