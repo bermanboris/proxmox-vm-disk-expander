@@ -3,7 +3,7 @@
 # Check if kpartx is installed otherwise install kpartx
 if ! [ -x "$(command -v kpartx)" ]; then
   printf 'Installing kpartx dependency...'
-  sudo apt-get install kpartx
+  apt-get install kpartx
 fi
 
 # # Check if all the arguments are provided
@@ -51,10 +51,10 @@ read -p "Are you sure you want to continue? (yes/no) " -n 1 -r
 # if the user says yes, then continue otherwise exit
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   printf "\nExpanding the disk..."
-  sudo kpartx -a $VIRTUAL_DISK_PATH
-  sudo growpart /dev/${DISK_NAME} ${VIRTUAL_DISK_NAME}
-  sudo resize2fs /dev/${DISK_NAME}${VIRTUAL_DISK_NAME}
-  sudo kpartx -d $VIRTUAL_DISK_PATH
+  kpartx -a $VIRTUAL_DISK_PATH
+  growpart /dev/${DISK_NAME} ${VIRTUAL_DISK_NAME}
+  resize2fs /dev/${DISK_NAME}${VIRTUAL_DISK_NAME}
+  kpartx -d $VIRTUAL_DISK_PATH
   # printf "Disk expanded successfully"
 else
   printf "\nExiting..."
