@@ -2,8 +2,8 @@
 
 # Check if kpartx is installed otherwise install kpartx
 if ! [ -x "$(command -v kpartx)" ]; then
-  printf 'Installing kpartx dependency...'
-  apt-get install kpartx
+  echo 'Installing kpartx dependency...'
+  apt-get install -y kpartx
 fi
 
 # # Check if all the arguments are provided
