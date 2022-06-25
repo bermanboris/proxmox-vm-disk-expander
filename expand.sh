@@ -45,8 +45,9 @@ echo $VIRTUAL_DISK_PATH
 echo VM: ${VM_ID} disk ${DISK_NAME} will be expanded by ${EXPAND_BY_GB}
 echo -e "\e[31mWarning: There is no way to downsize the disk \e[0m"
 
-# Ask for confirmation
-read -p "Are you sure you want to continue? (yes/no) " -n 1 -r
+# Ask for confirmation "yes" and git enter to continue
+read -p "Are you sure you want to expand the disk? (yes/no): " CONFIRM
+# read -p "Are you sure you want to continue? (yes/no) " -n 1 -r
 
 # if the user says yes, then continue otherwise exit
 if [[ $REPLY =~ ^[Yy]$ ]]; then
