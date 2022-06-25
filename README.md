@@ -62,3 +62,7 @@ The new table will be used at the next reboot or after you
 run partprobe(8) or kpartx(8)
 The operation has completed successfully.
 ```
+
+## Limitations
+
+- Resize of Ceph disks is currently not supported (PR are welcome!)
