@@ -65,5 +65,15 @@ The operation has completed successfully.
 
 ## Limitations
 
-- Currently supported only "cloud images" 
+- Currently supported only "cloud images" (or single ext4 partition installation)
+  but if you still want to resize regular vm with LVM partition table, you need to extend the LVM partition INSIDE the vm AFTER running the script. Resizing LVM is done like this:
+```shell
+$ lvm
+
+lvm> lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
+lvm> exit
+
+$ resize2fs /dev/ubuntu-vg/ubuntu-lv
+```
+  
 - Resize of Ceph disks is currently not supported (PR are welcome!)
