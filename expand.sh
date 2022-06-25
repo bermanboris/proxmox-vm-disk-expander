@@ -15,8 +15,8 @@ fi
 # fi
 
 # List of all the vm
-VM_LIST = $(qm list)
-echo VM_LIST
+VM_LIST=$(qm list)
+echo $VM_LIST
 # Promt the user to select the vm id to be expanded
 read -p "Enter the VM ID to be expanded: " VM_ID
 # Check if the VM id is valid
@@ -33,8 +33,8 @@ if [ -z "$(echo $EXPAND_BY_GB | grep -E '^[0-9]+[Gg]$')" ]; then
   exit 1
 fi
 
-VM_ID=$1
-NEW_SIZE=$2
+# VM_ID=$1
+# NEW_SIZE=$2
 DISK_NAME=$(qm config $1 | grep scsi0: | awk '{split($2,a,":|,");print a[1]}')
 VIRTUAL_DISK_NAME=$(qm config $1 | grep scsi0: | awk '{split($2,a,":|,");print a[2]}')
 VIRTUAL_DISK_PATH="/dev/${DISK_NAME}/${VIRTUAL_DISK_NAME}"
