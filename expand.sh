@@ -47,13 +47,13 @@ read -p "Are you sure you want to continue? (yes/no) " -n 1 -r
 
 # if the user says yes, then continue otherwise exit
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  echo -e "Expanding the disk..."
+  echo "\Expanding the disk..."
   sudo kpartx -a $VIRTUAL_DISK_PATH
   sudo growpart /dev/${DISK_NAME} ${VIRTUAL_DISK_NAME}
   sudo resize2fs /dev/${DISK_NAME}${VIRTUAL_DISK_NAME}
   sudo kpartx -d $VIRTUAL_DISK_PATH
   # echo "Disk expanded successfully"
 else
-  echo -e "Exiting..."
+  echo "\Exiting..."
   exit 1
 fi
