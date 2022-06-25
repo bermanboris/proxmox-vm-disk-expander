@@ -31,14 +31,14 @@ expand-disk
 Same as the installer.
 
 ```shell
-curl -sS https://raw.githubusercontent.com/fire1ce/proxmox-vm-disk-expander/main/install.sh | bash
+curl -sS https://raw.githubusercontent.com/bermanboris/proxmox-vm-disk-expander/main/install.sh | bash
 ```
 
 ## Example usage/output
 
 ```shell
 ╭─root@proxmox ~
-╰─# bash <(curl -s https://raw.githubusercontent.com/fire1ce/proxmox-vm-disk-expander/main/expand.sh)                                                      1 ↵
+╰─# bash <(curl -s https://raw.githubusercontent.com/bermanboris/proxmox-vm-disk-expander/main/expand.sh)                                                      1 ↵
       VMID NAME                 STATUS     MEM(MB)    BOOTDISK(GB) PID
        100 vm100                running    4096              40.20 1113
        101 test                 stopped    2048               2.20 0
