@@ -30,7 +30,7 @@ VIRTUAL_DISK_NAME=$(qm config $VM_ID | grep scsi0: | awk '{split($2,a,":|,");pri
 VIRTUAL_DISK_PATH="/dev/${DISK_NAME}/${VIRTUAL_DISK_NAME}"
 
 # Display warning
-echo VM: ${VM_ID} disk ${DISK_NAME} will be expanded by ${EXPAND_BY_GB}
+echo VM ID ${VM_ID} disk ${DISK_NAME} will be expanded by ${EXPAND_BY_GB}
 echo -e "\e[31mWarning: There is no way to downsize the disk! \e[0m"
 
 # Ask for confirmation "yes" and git enter to continue
