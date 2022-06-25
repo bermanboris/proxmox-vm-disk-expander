@@ -12,7 +12,7 @@ qm list
 read -p "Enter the VM ID to be expanded: " VM_ID
 # Check if the VM id is valid
 if [ -z "$(qm list | grep $VM_ID)" ]; then
-  printf "\nInvalid VM ID entered"
+  printf "\nInvalid VM ID"
   exit 1
 fi
 
