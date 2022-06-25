@@ -1,11 +1,26 @@
 # proxmox-vm-disk-expander
 
-Interactive disk expander for Proxmox VE.
-Expand your VM disks (including the partition) from your Proxmox host.
+Interactive disk expander for Proxmox's VM disks (including the partition) from your Proxmox host cli.
 
-## Usage
+## Curl Method
 
-Example usage/output:
+It will run the script once without installing it.
+
+```shell
+bash <(curl -s https://raw.githubusercontent.com/fire1ce/proxmox-vm-disk-expander/main/expand.sh)
+```
+
+## Installer
+
+It will install the script at Proxmox host for multiple use.
+
+Run the following command from Proxmox host:
+
+```shell
+curl -sS https://raw.githubusercontent.com/fire1ce/proxmox-vm-disk-expander/main/install.sh | bash
+```
+
+## Example usage/output
 
 ```shell
 ╭─root@proxmox ~
@@ -32,23 +47,4 @@ Warning: The kernel is still using the old partition table.
 The new table will be used at the next reboot or after you
 run partprobe(8) or kpartx(8)
 The operation has completed successfully.
-```
-
-### Curl method:
-
-It will run the script once without installing it.
-
-```bash
-bash <(curl -s https://raw.githubusercontent.com/fire1ce/proxmox-vm-disk-expander/main/expand.sh)
-```
-
-### Installer
-
-It will install the script at Proxmox host for multiple use.
-
-Run the following command from Proxmox host:
-
-```bash
-curl -sO https://raw.githubusercontent.com/bermanboris/proxmox-disk-expander/main/expand.sh
-bash expand.sh 100 15G
 ```
