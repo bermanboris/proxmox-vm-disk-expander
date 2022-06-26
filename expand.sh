@@ -21,6 +21,20 @@ while true; do
   fi
 done
 
+# funtion to check if the vm is running
+function check_vm_running() {
+  if [ "$(qm status $VM_ID | awk '{print $2}')" == "running" ]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+# Check if the vm is running until it is stopped
+while check_vm_running; do
+  read -p "The VM $VM_ID is running. Shutdown the VM and press Enter to continue"
+done
+
 while true; do
   # promt the user to enter the size to be expanded
   read -p "Enter the size to be expanded in GB (example: 10G): " EXPAND_BY_GB
