@@ -21,18 +21,18 @@ while true; do
   fi
 done
 
-# funtion to check if the vm is running
-function check_vm_running() {
-  if [ "$(qm status $VM_ID | awk '{print $2}')" == "running" ]; then
+# funtion to check if the vm is stopped
+function check_vm_stopped() {
+  if [ "$(qm status $VM_ID | awk '{print $2}')" != "stopped" ]; then
     return 0
   else
     return 1
   fi
 }
 
-# Check if the vm is running until it is stopped
-while check_vm_running; do
-  read -p "The VM $VM_ID is running. Shutdown the VM and press Enter to continue"
+# Check if the vm is stopped until it is stopped
+while check_vm_stopped; do
+  read -p "The VM $VM_ID must be stopped to expand the strage. Shutdown the VM and press Enter to continue"
 done
 
 while true; do
